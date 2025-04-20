@@ -18,7 +18,7 @@ Supports both primary keys and any other custom fields using attributes.
 Install via Composer:
 
 ```bash
-composer require seunome/snowflake-id-bundle
+composer require jeancodogno/doctrine-snowflake-id-bundle
 ```
 > The bundle uses autoconfiguration, no need to manually register it in `bundles.php`.
 ## 💡 Usage
@@ -27,16 +27,16 @@ composer require seunome/snowflake-id-bundle
 Use the `SnowflakeIdGenerator` class with Doctrine’s custom ID generation:
 
 ```php
-use JeanCodogno\\DoctrineSnowflakeIdBundle\\SnowflakeIdGenerator;
-use Doctrine\\ORM\\Mapping as ORM;
+use JeanCodogno\DoctrineSnowflakeIdBundle\SnowflakeIdGenerator;
+use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\\Entity]
+#[ORM\Entity]
 class Product
 {
-    #[ORM\\Id]
-    #[ORM\\Column(type: 'bigint')]
-    #[ORM\\GeneratedValue(strategy: 'CUSTOM')]
-    #[ORM\\CustomIdGenerator(class: SnowflakeIdGenerator::class)]
+    #[ORM\Id]
+    #[ORM\Column(type: 'bigint')]
+    #[ORM\GeneratedValue(strategy: 'CUSTOM')]
+    #[ORM\CustomIdGenerator(class: SnowflakeIdGenerator::class)]
     private ?string $id = null;
 
     // ...
@@ -47,13 +47,13 @@ class Product
 Use the `#[AutoSnowflake]` attribute to mark any non-ID field for automatic generation:
 
 ```php
-use JeanCodogno\\DoctrineSnowflakeIdBundle\\Attributes\\AutoSnowflake;
-use Doctrine\\ORM\\Mapping as ORM;
+use JeanCodogno\DoctrineSnowflakeIdBundle\Attributes\AutoSnowflake;
+use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\\Entity]
+#[ORM\Entity]
 class Product
 {
-    #[ORM\\Column(type: 'bigint', unique: true)]
+    #[ORM\Column(type: 'bigint', unique: true)]
     #[AutoSnowflake]
     private ?string $publicId = null;
 
