@@ -1,5 +1,5 @@
 {
-    "name": "jeancodogno/doctrine-snowflake-id-bundle",
+    "name": "jeancodognodev/doctrine-snowflake-id-bundle",
     "description": "Symfony bundle to automatically generate Snowflake IDs",
     "type": "symfony-bundle",
     "license": "MIT",
@@ -8,7 +8,8 @@
         "symfony/framework-bundle": "^7.2",
         "doctrine/orm": "^3.3",
         "godruoyi/php-snowflake": "^3.1",
-        "doctrine/doctrine-bundle": "^2.6"
+        "doctrine/doctrine-bundle": "^2.6",
+        "doctrine/mongodb-odm-bundle": "^5.3"
     },
     "autoload": {
         "psr-4": {

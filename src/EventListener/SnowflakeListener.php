@@ -10,7 +10,7 @@ use Doctrine\ORM\Events;
 use JeanCodogno\DoctrineSnowflakeIdBundle\Attributes\SnowflakeColumn;
 use JeanCodogno\DoctrineSnowflakeIdBundle\Services\SnowflakeGenerator;
 
-#[AsDoctrineListener(event: Events::prePersist, priority: 500, connection: 'default')]
+#[AsDoctrineListener(event: Events::prePersist)]
 final class SnowflakeListener
 {
     public function __construct(

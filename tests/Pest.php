@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 /*
 |--------------------------------------------------------------------------
 | Test Case
@@ -11,7 +12,10 @@
 |
 */
 
-pest()->extend(Tests\TestCase::class)->in('*');
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+
+pest()->extend(Tests\TestCase::class)->in('Unit');
+pest()->extend(KernelTestCase::class)->in('Integration');
 
 
 afterEach(function () {

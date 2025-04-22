@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace JeanCodogno\DoctrineSnowflakeIdBundle;
 
+use JeanCodogno\DoctrineSnowflakeIdBundle\EventListener\MongoSnowflakeListener;
 use JeanCodogno\DoctrineSnowflakeIdBundle\EventListener\SnowflakeListener;
 use JeanCodogno\DoctrineSnowflakeIdBundle\Services\SnowflakeGenerator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -22,8 +23,11 @@ final class DoctrineSnowflakeIdBundle extends Bundle
 
         $container->register(SnowflakeListener::class)
             ->setAutowired(true)
-            ->setAutoconfigured(true)
-            ->addTag('doctrine.event_listener', ['event' => 'prePersist']);
+            ->setAutoconfigured(true);
+
+        $container->register(MongoSnowflakeListener::class)
+            ->setAutowired(true)
+            ->setAutoconfigured(true);
     }
 
     public function boot(): void
