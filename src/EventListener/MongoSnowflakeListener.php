@@ -12,7 +12,7 @@ use JeanCodogno\DoctrineSnowflakeIdBundle\Services\SnowflakeGenerator;
 use ReflectionClass;
 
 #[AsDoctrineListener(event: Events::prePersist, priority: 500, connection: 'default')]
-final class MongoAutoSnowflakeListener
+final class MongoSnowflakeListener
 {
     public function __construct(
         private SnowflakeGenerator $generator
