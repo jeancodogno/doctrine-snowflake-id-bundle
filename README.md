@@ -44,17 +44,17 @@ class Product
 ```
 
 ### ✳️ Option 2: Assigning Snowflake ID to Custom Fields
-Use the `#[AutoSnowflake]` attribute to mark any non-ID field for automatic generation:
+Use the `#[SnowflakeColumn]` attribute to mark any non-ID field for automatic generation:
 
 ```php
-use JeanCodogno\DoctrineSnowflakeIdBundle\Attributes\AutoSnowflake;
+use JeanCodogno\DoctrineSnowflakeIdBundle\Attributes\SnowflakeColumn;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
 class Product
 {
     #[ORM\Column(type: 'bigint', unique: true)]
-    #[AutoSnowflake]
+    #[SnowflakeColumn]
     private ?string $publicId = null;
 
     // ...
