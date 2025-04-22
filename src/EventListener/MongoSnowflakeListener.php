@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace JeanCodogno\DoctrineSnowflakeIdBundle\EventListener;
 
-use Doctrine\Bundle\DoctrineBundle\Attribute\AsDoctrineListener;
+use Doctrine\Bundle\MongoDBBundle\Attribute\AsDocumentListener;
 use Doctrine\ODM\MongoDB\Event\LifecycleEventArgs;
 use Doctrine\ODM\MongoDB\Events;
 use JeanCodogno\DoctrineSnowflakeIdBundle\Attributes\SnowflakeColumn;
 use JeanCodogno\DoctrineSnowflakeIdBundle\Services\SnowflakeGenerator;
 use ReflectionClass;
 
-#[AsDoctrineListener(event: Events::prePersist, priority: 500, connection: 'default')]
+#[AsDocumentListener(event: Events::prePersist)]
 final class MongoSnowflakeListener
 {
     public function __construct(

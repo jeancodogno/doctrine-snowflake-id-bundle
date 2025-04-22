@@ -23,13 +23,11 @@ final class DoctrineSnowflakeIdBundle extends Bundle
 
         $container->register(SnowflakeListener::class)
             ->setAutowired(true)
-            ->setAutoconfigured(true)
-            ->addTag('doctrine.event_listener', ['event' => 'prePersist']);
+            ->setAutoconfigured(true);
 
         $container->register(MongoSnowflakeListener::class)
             ->setAutowired(true)
-            ->setAutoconfigured(true)
-            ->addTag('doctrine_mongodb.odm.event_listener', ['event' => 'prePersist']);
+            ->setAutoconfigured(true);
     }
 
     public function boot(): void
