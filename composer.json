@@ -1,5 +1,5 @@
 {
-    "name": "jeancodognodev/doctrine-snowflake-id-bundle",
+    "name": "jeancodogno/doctrine-snowflake-id-bundle",
     "description": "Symfony bundle to automatically generate Snowflake IDs",
     "type": "symfony-bundle",
     "license": "MIT",
