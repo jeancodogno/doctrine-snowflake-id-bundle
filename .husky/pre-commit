@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+echo "🔍 Running PHPStan..."
+vendor/bin/phpstan analyse --memory-limit=1G || exit 1
+
+echo "📊 Running PHP Insights..."
+vendor/bin/phpinsights --no-interaction --quiet || exit 1
+
+echo "🧪 Running tests (Pest)..."
+vendor/bin/pest || exit 1
+
+echo "✅ All checks passed! Proceeding with commit..."
