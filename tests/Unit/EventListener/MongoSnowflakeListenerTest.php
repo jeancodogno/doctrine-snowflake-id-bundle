@@ -100,6 +100,7 @@ it('not assigns a Snowflake ID to filled field', function () {
     $document = new TestDocumentFilled();
 
     $unexpectedId = '23456789012345678';
+    $expectedId = $document->publicId;
 
     $generator = Mockery::mock(SnowflakeGenerator::class);
 
@@ -121,5 +122,5 @@ it('not assigns a Snowflake ID to filled field', function () {
     /** @var LifecycleEventArgs $eventArgs  */
     $listener->prePersist($eventArgs);
 
-    expect($document->publicId)->toBe('123456789012345678');
+    expect($document->publicId)->toBe($expectedId);
 });
