@@ -19,7 +19,6 @@ class SnowflakeGenerator
         #[Autowire(param: 'snowflake_id.worker_id')]
         int $workerId = 0,
     ) {
-
         $this->snowflake = new Snowflake($datacenterId, $workerId);
 
         if ($startTimestamp !== null) {

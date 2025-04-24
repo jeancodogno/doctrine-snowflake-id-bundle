@@ -7,32 +7,16 @@ namespace JeanCodogno\DoctrineSnowflakeIdBundle\EventListener;
 use Doctrine\Bundle\MongoDBBundle\Attribute\AsDocumentListener;
 use Doctrine\ODM\MongoDB\Event\LifecycleEventArgs;
 use Doctrine\ODM\MongoDB\Events;
-use JeanCodogno\DoctrineSnowflakeIdBundle\Attributes\SnowflakeColumn;
-use JeanCodogno\DoctrineSnowflakeIdBundle\Services\SnowflakeGenerator;
-use ReflectionClass;
+use JeanCodogno\DoctrineSnowflakeIdBundle\Attributes\SnowflakeField;
 
 #[AsDocumentListener(event: Events::prePersist)]
-final class MongoSnowflakeListener
+final class MongoSnowflakeListener extends BaseSnowflakeListener
 {
-    public function __construct(
-        private SnowflakeGenerator $generator
-    ) {
-    }
-
+    protected string $attribute = SnowflakeField::class;
     public function prePersist(LifecycleEventArgs $event): void
     {
         $document = $event->getDocument();
 
-        $refClass = new ReflectionClass($document);
-
-        foreach ($refClass->getProperties() as $property) {
-            $attributes = $property->getAttributes(SnowflakeColumn::class);
-            if ($attributes !== []) {
-                $property->setAccessible(true);
-                if ($property->getValue($document) === null) {
-                    $property->setValue($document, (string) $this->generator->generate());
-                }
-            }
-        }
+        $this->populateSnowflakeColumns($document);
     }
 }

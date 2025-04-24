@@ -2,17 +2,12 @@
 
 declare(strict_types=1);
 
-namespace JeanCodogno\DoctrineSnowflakeIdBundle;
+namespace JeanCodogno\DoctrineSnowflakeIdBundle\IdGenerator;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Id\AbstractIdGenerator;
 use JeanCodogno\DoctrineSnowflakeIdBundle\Services\SnowflakeGenerator;
 
-/**
- * Class SnowflakeIdGenerator
- *
- * @package JeanCodogno\DoctrineSnowflakeIdBundle
- */
 class SnowflakeIdGenerator extends AbstractIdGenerator
 {
     private static ?SnowflakeGenerator $generator = null;
@@ -27,7 +22,7 @@ class SnowflakeIdGenerator extends AbstractIdGenerator
      *
      * @param $entity
      */
-    public function generateId(EntityManagerInterface $em, object|null $entity): string
+    public function generateId(EntityManagerInterface $em, ?object $entity): string
     {
         if (! self::$generator) {
             throw new \RuntimeException('SnowflakeGenerator has not been set.');

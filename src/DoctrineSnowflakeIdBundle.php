@@ -6,6 +6,8 @@ namespace JeanCodogno\DoctrineSnowflakeIdBundle;
 
 use JeanCodogno\DoctrineSnowflakeIdBundle\EventListener\MongoSnowflakeListener;
 use JeanCodogno\DoctrineSnowflakeIdBundle\EventListener\SnowflakeListener;
+use JeanCodogno\DoctrineSnowflakeIdBundle\IdGenerator\MongoSnowflakeIdGenerator;
+use JeanCodogno\DoctrineSnowflakeIdBundle\IdGenerator\SnowflakeIdGenerator;
 use JeanCodogno\DoctrineSnowflakeIdBundle\Services\SnowflakeGenerator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -17,6 +19,16 @@ final class DoctrineSnowflakeIdBundle extends Bundle
         parent::build($container);
 
         $container->register(SnowflakeGenerator::class)
+            ->setAutowired(true)
+            ->setAutoconfigured(true)
+            ->setPublic(true);
+
+        $container->register(SnowflakeIdGenerator::class)
+            ->setAutowired(true)
+            ->setAutoconfigured(true)
+            ->setPublic(true);
+
+        $container->register(MongoSnowflakeIdGenerator::class)
             ->setAutowired(true)
             ->setAutoconfigured(true)
             ->setPublic(true);
@@ -42,5 +54,6 @@ final class DoctrineSnowflakeIdBundle extends Bundle
          * */
         $generator = $container->get(SnowflakeGenerator::class);
         SnowflakeIdGenerator::addGenerator($generator);
+        MongoSnowflakeIdGenerator::addGenerator($generator);
     }
 }

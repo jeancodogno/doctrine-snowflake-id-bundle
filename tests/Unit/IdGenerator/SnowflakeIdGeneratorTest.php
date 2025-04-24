@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use JeanCodogno\DoctrineSnowflakeIdBundle\Services\SnowflakeGenerator;
-use JeanCodogno\DoctrineSnowflakeIdBundle\SnowflakeIdGenerator;
 use Doctrine\ORM\EntityManagerInterface;
+use JeanCodogno\DoctrineSnowflakeIdBundle\IdGenerator\SnowflakeIdGenerator;
 
 it('generates a snowflake ID after setting the generator', function () {
     
