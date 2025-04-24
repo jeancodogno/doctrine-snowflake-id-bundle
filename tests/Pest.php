@@ -14,34 +14,64 @@ declare(strict_types=1);
 
 use JeanCodogno\DoctrineSnowflakeIdBundle\Attributes\SnowflakeField;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use \Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use Doctrine\ORM\Mapping as ORM;
+use JeanCodogno\DoctrineSnowflakeIdBundle\Attributes\SnowflakeColumn;
 
 pest()->extend(Tests\TestCase::class)->in('Unit');
 pest()->extend(KernelTestCase::class)->in('Integration');
 
-#[\Doctrine\ODM\MongoDB\Mapping\Annotations\Document]
+#[ODM\Document]
 class TestDocument {
-    #[\Doctrine\ODM\MongoDB\Mapping\Annotations\Field(type: 'string')]
+    #[ODM\Field(type: 'bigint')]
     #[SnowflakeField]
     public ?string $publicId = null;
 }
 
-#[\Doctrine\ODM\MongoDB\Mapping\Annotations\Document]
+#[ODM\Document]
 class TestDocumentWithIdField {
-    #[\Doctrine\ODM\MongoDB\Mapping\Annotations\Id(strategy: 'NONE', type: 'string')]
+    #[ODM\Id(strategy: 'NONE', type: 'string')]
     #[SnowflakeField]
     public ?string $id = null;
 }
 
-#[\Doctrine\ODM\MongoDB\Mapping\Annotations\Document]
+#[ODM\Document]
 class TestDocumentWithoutAttribute {
-    #[\Doctrine\ODM\MongoDB\Mapping\Annotations\Field(type: 'string')]
+    #[ODM\Field(type: 'bigint')]
     public ?string $publicId = null;
 }
 
-#[\Doctrine\ODM\MongoDB\Mapping\Annotations\Document]
+#[ODM\Document]
 class TestDocumentFilled {
-    #[\Doctrine\ODM\MongoDB\Mapping\Annotations\Field(type: 'string')]
+    #[ODM\Field(type: 'bigint')]
     #[SnowflakeField]
+    public ?string $publicId = '123456789012345678';
+}
+
+#[ORM\Entity]
+class TestEntity {
+    #[ORM\Id]
+    #[SnowflakeColumn]
+    public ?string $publicId = null;
+}
+
+#[ORM\Entity]
+class TestEntityWithIDField {
+    #[ORM\Column(type: 'bigint', unique: true)]
+    #[SnowflakeColumn]
+    public ?string $id = null;
+}
+
+#[ORM\Entity]
+class TestEntityWithoutAttribute {
+    #[ORM\Column(type: 'bigint')]
+    public ?string $publicId = null;
+}
+
+#[ODM\Document]
+class TestEntityFilled {
+    #[ORM\Column(type: 'bigint')]
+    #[SnowflakeColumn]
     public ?string $publicId = '123456789012345678';
 }
 
