@@ -32,4 +32,7 @@ jobs:
         run: vendor/bin/phpinsights --no-interaction --quiet
 
       - name: 🧪 Run Pest tests
-        run: vendor/bin/pest
+        run: vendor/bin/
+
+      - name: 🧪 Run Pest tests (Coverage)
+        run: vendor/bin/pest --type-coverage --min=100

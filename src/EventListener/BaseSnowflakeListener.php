@@ -21,7 +21,7 @@ abstract class BaseSnowflakeListener
     {
         $refClass = new ReflectionClass($entityOrDocument);
         $properties = $refClass->getProperties();
-
+        
         foreach ($properties as $property) {
             $attributes = $property->getAttributes($this->attribute);
             if ($attributes !== []) {
