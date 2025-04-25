@@ -1,6 +1,13 @@
 {
     "name": "jeancodogno/doctrine-snowflake-id-bundle",
     "description": "Symfony bundle to automatically generate Snowflake IDs",
+    "keywords": [
+        "snowflake",
+        "doctrine",
+        "doctrine-bundle",
+        "doctrine-odm-bundle",
+        "doctrine-orm-bundle"
+    ],
     "type": "symfony-bundle",
     "license": "MIT",
     "require": {
@@ -8,7 +15,8 @@
         "symfony/framework-bundle": "^7.2",
         "doctrine/orm": "^3.3",
         "godruoyi/php-snowflake": "^3.1",
-        "doctrine/doctrine-bundle": "^2.6"
+        "doctrine/doctrine-bundle": "^2.6",
+        "doctrine/mongodb-odm-bundle": "^5.3"
     },
     "autoload": {
         "psr-4": {
@@ -22,14 +30,17 @@
     },
     "authors": [
         {
-            "name": "Jean Carlo Codogno"
+            "name": "Jean Carlo Codogno",
+            "email": "jeancarlo.eng.comp@gmail.com"
         }
     ],
     "require-dev": {
         "phpstan/phpstan": "^2.1",
         "nunomaduro/phpinsights": "^2.13",
         "pestphp/pest": "^3.8",
-        "mockery/mockery": "^1.6"
+        "mockery/mockery": "^1.6",
+        "pestphp/pest-plugin-type-coverage": "^3.5",
+        "pestphp/pest-plugin-arch": "^3.1"
     },
     "minimum-stability": "stable",
     "prefer-stable": true,
