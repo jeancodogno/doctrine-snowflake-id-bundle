@@ -3,6 +3,15 @@
 Symfony bundle to automatically assign Snowflake-based IDs to your Doctrine entities and documents.
 Supports both primary keys and any other custom fields using attributes.
 
+<p align="left">
+    <p align="left">
+        <a href="https://github.com/pestphp/pest/actions"><img alt="GitHub Workflow Status (main)" src="https://img.shields.io/github/actions/workflow/status/jeancodogno/doctrine-snowflake-id-bundle/ci.yml?branch=main&label=Tests"></a>
+        <a href="https://packagist.org/packages/jeancodogno/doctrine-snowflake-id-bundle"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/jeancodogno/doctrine-snowflake-id-bundle"></a>
+        <a href="https://packagist.org/packages/jeancodogno/doctrine-snowflake-id-bundle"><img alt="Latest Version" src="https://img.shields.io/packagist/v/jeancodogno/doctrine-snowflake-id-bundle"></a>
+        <a href="https://packagist.org/packages/jeancodogno/doctrine-snowflake-id-bundle"><img alt="License" src="https://img.shields.io/packagist/l/jeancodogno/doctrine-snowflake-id-bundle"></a>
+    </p>
+</p>
+
 ## 🚀 Features
 
 ✅ Assigns unique Snowflake IDs to your entities
